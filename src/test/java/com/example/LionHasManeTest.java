@@ -1,9 +1,12 @@
 
 package com.example;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -30,12 +33,14 @@ public class LionHasManeTest {
     @Test
     public void doesHaveMane() {
 
+
         try {
             Lion lion = new Lion(sex);
-            boolean actual = lion.doesHaveMane(sex, expected);
+            boolean actual = lion.doesHaveMane();
             assertEquals(expected, actual);
         } catch (Exception exception) {
-            System.out.println("Используйте допустимые значения пола животного - самей или самка");
+            fail("Используйте допустимые значения пола животного - самец или самка");
+            exception.printStackTrace();
         }
     }
 }

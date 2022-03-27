@@ -12,24 +12,18 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Mock
-    Feline feline;
-
-
     @Test
     public void eatMeat() throws Exception {
 
-        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        List<String> listOfFood = feline.getFood("Хищник");
-        assertEquals(listOfFood, List.of("Животные", "Птицы", "Рыба"));
+        Feline feline = new Feline();
+        assertEquals(feline.eatMeat(), List.of("Животные", "Птицы", "Рыба"));
     }
 
     @Test
     public void eatMeatNegative() throws Exception {
 
-        Mockito.when(feline.getFood("Травоядное")).thenReturn(List.of("Трава", "Различные растения"));
-        List<String> listOfFood = feline.getFood("Травоядное");
-        assertEquals(listOfFood, List.of("Трава", "Различные растения"));
+        Feline feline = new Feline();
+        assertNotEquals(feline.eatMeat(), List.of("Трава", "Различные растения"));
     }
 
 

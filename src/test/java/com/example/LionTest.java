@@ -1,41 +1,44 @@
 package com.example;
 
+import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
-
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class LionTest {
+
+    @Mock
+    Feline feline;
+
+    @Before
+    public void before() {
+        feline = mock(Feline.class);
+    }
 
     @Test
     public void lionGetKittensPositive() {
 
-        Lion lion = new Lion(new Feline());
-        int expected = 1;
-        int actual = lion.getKittens();
-        assertEquals(expected, actual);
+        Lion lion = new Lion(feline);
+        Mockito.when(lion.getKittens()).thenReturn(1);
+        assertEquals(1, lion.getKittens());
     }
 
     @Test
     public void lionGetKittensNegative() {
 
-        Lion lion = new Lion(new Feline());
-        int expected = 8;
-        int actual = lion.getKittens();
-        assertNotEquals(expected, actual);
+        Lion lion = new Lion(feline);
+        Mockito.when(lion.getKittens()).thenReturn(1);
+        assertNotEquals(8, lion.getKittens());
     }
 
     @Test
-    public void lionGetFood() {
+    public void lionGetFood() throws Exception{
 
-        try {
-            Lion lion = new Lion(new Feline());
-            List<String> actual = lion.getFood();
-            List<String> expected = List.of("Животные", "Птицы", "Рыба");
-            assertEquals(expected, actual);
-        } catch (Exception exception) {
-            System.out.println("Неизвестный вид животного, используйте значение Травоядное или Хищник");
-        }
+
+            Lion lion = new Lion(feline);
+            lion.getFood();
+            Mockito.verify(feline).getFood( "Хищник");
     }
 }
