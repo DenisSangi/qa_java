@@ -19,8 +19,6 @@ public class FelineTest {
         List<String> actual = feline.eatMeat();
         assertEquals(expected, actual);
         verify(feline).getFood("Хищник");
-        System.out.println(feline.eatMeat());
-
     }
 
     @Test
@@ -32,8 +30,6 @@ public class FelineTest {
         List<String> actual = feline.eatMeat();
         assertNotEquals(expected, actual);
         verify(feline).getFood("Хищник");
-        System.out.println(feline.eatMeat());
-
     }
 
     @Test
@@ -41,24 +37,15 @@ public class FelineTest {
         Feline feline = new Feline();
         int expected = 1;
         int actual = feline.getKittens();
-        System.out.println("actual = " + actual);
         assertEquals(actual, expected);
     }
 
     @Test
-    public void getKittensSecondPositive() {
+    public void getKittensSecond() {
         Feline feline = new Feline();
         int expected = 2;
         int actual = feline.getKittens(2);
         assertEquals(actual, expected);
-    }
-
-    @Test
-    public void getKittensSecondNegative() {
-        Feline feline = new Feline();
-        int expected = 7;
-        int actual = feline.getKittens(2);
-        assertNotEquals(actual, expected);
     }
 
     @Test
@@ -67,14 +54,6 @@ public class FelineTest {
         String expected = "Кошачьи";
         String actual = feline.getFamily();
         assertEquals(expected, actual);
-    }
-
-    @Test
-    public void getFamilyNegativeTest() {
-        Feline feline = new Feline();
-        String expected = "Куньи";
-        String actual = feline.getFamily();
-        assertNotEquals(expected, actual);
     }
 
 }

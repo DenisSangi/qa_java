@@ -1,20 +1,24 @@
 package com.example;
 
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 
 public class LionHasManeExceptionTest {
+
+    Feline feline;
 
     @Test
     public void doesHaveManeWithExceptionTest() {
 
-        Exception expectedException = new Exception("Используйте допустимые значения пола животного - самец или самка");
-
         try {
-            Lion lion = new Lion("Лев");
+            Lion lion = new Lion(feline, "Жывотное");
+            lion.doesHaveMane();
+
+            fail();
         } catch (Exception exception) {
-            assertEquals(expectedException.getMessage(), exception.getMessage());
+            assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
         }
     }
 }

@@ -17,7 +17,6 @@ public class CatGetFoodTest {
         //Arrange
         Cat cat = new Cat(feline);
 
-        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
 
         //Act
